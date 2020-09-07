@@ -1,0 +1,2 @@
+language: java
+script: mvn clean package sonar:sonar -Dsonar.login=${SonarCloud} -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=rpcaldeira-github
