@@ -1,0 +1,10 @@
+
+Lists of 8 third-party dependencies.
+     (Apache Software License, Version 2.0) Apache Log4j (log4j:log4j:1.2.17 - http://logging.apache.org/log4j/1.2/)
+     (The Apache License, Version 2.0) org.apiguardian:apiguardian-api (org.apiguardian:apiguardian-api:1.1.0 - https://github.com/apiguardian-team/apiguardian)
+     (Apache Software License, Version 2.0) org.immutables.value (org.immutables:value:2.8.2 - http://immutables.org/value)
+     (Eclipse Public License v2.0) JUnit Jupiter API (org.junit.jupiter:junit-jupiter-api:5.6.2 - https://junit.org/junit5/)
+     (Eclipse Public License v2.0) JUnit Platform Commons (org.junit.platform:junit-platform-commons:1.6.2 - https://junit.org/junit5/)
+     (The Apache License, Version 2.0) org.opentest4j:opentest4j (org.opentest4j:opentest4j:1.2.0 - https://github.com/ota4j-team/opentest4j)
+     (MIT License) SLF4J API Module (org.slf4j:slf4j-api:1.7.30 - http://www.slf4j.org)
+     (MIT License) SLF4J LOG4J-12 Binding (org.slf4j:slf4j-log4j12:1.7.30 - http://www.slf4j.org)
