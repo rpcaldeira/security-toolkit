@@ -11,9 +11,58 @@
 
     <name>RPCNET Java Security Toolkit</name>
 
+    <description>
+        The RPCNET Java Security Toolkit is a java library designed to handle several common
+        operations related with security such as expanding a ShortURL and checking if a domain is
+        subject to a Zone Transfer DNS query.
+    </description>
+
+    <url>https://github.com/rpcaldeira/security-toolkit</url>
+
+    <organization>
+        <name>Rui Pedro Caldeira</name>
+        <url>https://github.com/rpcaldeira/security-toolkit</url>
+    </organization>
+
+    <inceptionYear>2020</inceptionYear>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/rpcaldeira/security-toolkit/issues</url>
+    </issueManagement>
+
+    <ciManagement>
+        <system>Travis CI</system>
+        <url>https://travis-ci.org/rpcaldeira/security-toolkit</url>
+    </ciManagement>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://opensource.org/licenses/Apache-2.0</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:https://github.com/rpcaldeira/security-toolkit</connection>
+        <developerConnection>scm:git:https://github.com/rpcaldeira/security-toolkit</developerConnection>
+        <url>https://github.com/rpcaldeira/security-toolkit</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>rpcaldeira</id>
+            <name>Rui Pedro Caldeira</name>
+            <email>TheCakeIsALie@rpcnet.net</email>
+        </developer>
+    </developers>
+
     <modules>
         <module>web</module>
+        <module>mail</module>
         <module>securitytoolkit</module>
+        <module>dns</module>
     </modules>
 
     <properties>
@@ -64,6 +113,16 @@
             <dependency>
                 <groupId>net.rpcnet.securitytoolkit</groupId>
                 <artifactId>web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.rpcnet.securitytoolkit</groupId>
+                <artifactId>mail</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.rpcnet.securitytoolkit</groupId>
+                <artifactId>dns</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

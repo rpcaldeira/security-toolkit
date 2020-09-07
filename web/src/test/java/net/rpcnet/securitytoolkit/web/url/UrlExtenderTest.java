@@ -1,12 +1,14 @@
 package net.rpcnet.securitytoolkit.web.url;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class UrlExtenderTest {
 
     @Test
-    public void basicTest(){
-        UrlExtender.extendUrl("http://tinyurl.com/KindleWireless");
+    void testBasic(){
+        ExtendResult extendResult = UrlExtender.extendUrl("http://tinyurl.com/KindleWireless");
+        Assertions.assertTrue(extendResult.isSuccessful());
     }
 
 }

@@ -19,6 +19,14 @@
             <groupId>net.rpcnet.securitytoolkit</groupId>
             <artifactId>web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>net.rpcnet.securitytoolkit</groupId>
+            <artifactId>mail</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.rpcnet.securitytoolkit</groupId>
+            <artifactId>dns</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
