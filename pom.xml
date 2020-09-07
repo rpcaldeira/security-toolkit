@@ -50,6 +50,14 @@
         <tag>HEAD</tag>
     </scm>
 
+    <distributionManagement>
+        <repository>
+            <id>GitHub</id>
+            <name>GitHub Maven Repository</name>
+            <url>https://maven.pkg.github.com/rpcaldeira</url>
+        </repository>
+    </distributionManagement>
+
     <developers>
         <developer>
             <id>rpcaldeira</id>
@@ -67,14 +75,17 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven-version>2.0.6</maven-version>
+        <java-version>11</java-version>
+        <maven.compiler.source>${java-version}</maven.compiler.source>
+        <maven.compiler.target>${java-version}</maven.compiler.target>
 
         <immutables.version>2.8.2</immutables.version>
         <junit.version>5.6.2</junit.version>
         <slf4j.version>1.7.30</slf4j.version>
         <maven-shade-plugin.version>2.4.3</maven-shade-plugin.version>
         <maven-source-plugin.version>3.2.0</maven-source-plugin.version>
+        <maven-enforcer-plugin.version>3.0.0-M3</maven-enforcer-plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -141,6 +152,11 @@
                     <artifactId>maven-source-plugin</artifactId>
                     <version>${maven-source-plugin.version}</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>${maven-enforcer-plugin.version}</version>
+                </plugin>
             </plugins>
         </pluginManagement>
         <plugins>
@@ -154,6 +170,28 @@
                         <goals>
                             <goal>jar-no-fork</goal>
                         </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>enforce-versions</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireMavenVersion>
+                                    <version>${maven-version}</version>
+                                </requireMavenVersion>
+                                <requireJavaVersion>
+                                    <version>${java-version}</version>
+                                </requireJavaVersion>
+                            </rules>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

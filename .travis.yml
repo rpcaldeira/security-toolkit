@@ -1,2 +1,11 @@
+sudo: false
 language: java
-script: mvn clean package sonar:sonar -Dsonar.login=${SonarCloud} -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=rpcaldeira-github
+jdk:
+  - openjdk11
+script: mvn clean verify sonar:sonar -Dsonar.login=${SonarCloud} -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=rpcaldeira-github
+deploy:
+  provider: script
+  script: mvn deploy -Dtoken=${GitHub}
+  on:
+    branch: master
+    jdk: openjdk11
