@@ -7,7 +7,9 @@ import org.slf4j.LoggerFactory;
 import java.net.http.HttpClient;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Objects;
+import java.util.Optional;
 
 public class UrlExtender {
 
@@ -33,12 +35,22 @@ public class UrlExtender {
                 iterationUrl = iterationResult;
             }
         } while (Objects.nonNull(iterationResult));
+        intermediateResults.remove(shortUrl);
 
-        return ImmutableExtendResult.builder()
-                .isSuccessful(!iterationUrl.equals(shortUrl))
-                .finalResult(iterationUrl)
-                .intermediateResults(intermediateResults)
-                .build();
+        boolean isSuccessful = !iterationUrl.equals(shortUrl);
+
+        ImmutableExtendResult.Builder builder = ImmutableExtendResult.builder();
+        builder.isSuccessful(isSuccessful);
+
+        if(isSuccessful){
+            builder.finalResult(Optional.of(iterationUrl));
+            builder.intermediateResults(intermediateResults);
+        } else {
+            builder.finalResult(Optional.empty());
+            builder.intermediateResults(Collections.emptyList());
+        }
+
+        return builder.build();
     }
 
 

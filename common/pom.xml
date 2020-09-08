@@ -10,9 +10,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>mail</artifactId>
+    <artifactId>common</artifactId>
     <packaging>jar</packaging>
-    <name>RPCNET Java Security Toolkit: E-Mail Module</name>
+    <name>RPCNET Java Security Toolkit: Common Module</name>
 
     <dependencies>
         <!-- Functional Dependencies -->
@@ -41,12 +41,6 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-        </dependency>
-
-        <!-- Internal Dependencies -->
-        <dependency>
-            <groupId>net.rpcnet.securitytoolkit</groupId>
-            <artifactId>common</artifactId>
         </dependency>
     </dependencies>
 
