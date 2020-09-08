@@ -8,6 +8,10 @@ public class SPFChecker {
 
     public static final String SPF = "spf";
 
+    private SPFChecker(){
+        //Private utility class constructor
+    }
+
     public static String getSPF(String domain){
         Collection<String> txtRecords = TXTRecordChecker.getTXT(domain);
         return txtRecords.stream().filter(str -> str.contains(SPF)).findAny().orElse(null);

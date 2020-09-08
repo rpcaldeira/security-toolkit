@@ -14,6 +14,10 @@ import java.util.Iterator;
 
 public class TXTRecordChecker {
 
+    private TXTRecordChecker(){
+        //Private utility class constructor
+    }
+
     public static Collection<String> getTXT(String domain){
         return getTXT("%s", domain);
     }
