@@ -2,7 +2,7 @@ sudo: false
 language: java
 jdk:
   - openjdk11
-script: chmod +x mvnw && mvnw clean verify sonar:sonar -Dsonar.login=${SonarCloud} -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=rpcaldeira-github
+script: mvnw clean verify sonar:sonar -Dsonar.login=${SonarCloud} -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=rpcaldeira-github
 #deploy:
 #  provider: script
 #  script: mvn -B release:prepare release:perform -Dtoken=${GitHub}
