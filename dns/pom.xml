@@ -15,6 +15,12 @@
     <name>RPCNET Java Security Toolkit: DNS Module</name>
 
     <dependencies>
+        <!-- Functional Dependencies -->
+        <dependency>
+            <groupId>dnsjava</groupId>
+            <artifactId>dnsjava</artifactId>
+        </dependency>
+
         <!-- Clean Code Dependencies -->
         <dependency>
             <groupId>org.immutables</groupId>
