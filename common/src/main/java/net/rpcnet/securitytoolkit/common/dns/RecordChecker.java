@@ -19,7 +19,7 @@ public class RecordChecker {
         //Private utility class constructor
     }
 
-    public static Collection<String> getCAA(String domain){
+    public static Collection<CAADto> getCAA(String domain){
         return getCAA("%s", domain);
     }
 
@@ -29,7 +29,6 @@ public class RecordChecker {
     public static Collection<String> getTXT(String domain){
         return getTXT("%s", domain, Type.TXT);
     }
-
     public static Collection<String> getTXT(String format, String domain, int type){
         String testingDomain = String.format(format, domain);
         final Collection<String> result = new ArrayList<>();
@@ -54,9 +53,9 @@ public class RecordChecker {
         return result;
     }
 
-    public static Collection<String> getCAA(String format, String domain){
+    public static Collection<CAADto> getCAA(String format, String domain){
         String testingDomain = String.format(format, domain);
-        final Collection<String> result = new ArrayList<>();
+        final Collection<CAADto> result = new ArrayList<>();
 
         try {
             final Lookup lookup = new Lookup(testingDomain, Type.CAA);
@@ -66,9 +65,7 @@ public class RecordChecker {
             if (lookup.getResult() == Lookup.SUCCESSFUL) {
                 for (Record record : records) {
                     final CAARecord caa = (CAARecord) record;
-                    caa.getValue();
-                    caa.getFlags();
-                    caa.getTag();
+                    result.add(new CAADto(caa.getValue(), caa.getFlags(), caa.getTag()));
                 }
             }
         } catch (UnknownHostException | TextParseException e) {
@@ -76,6 +73,31 @@ public class RecordChecker {
         }
 
         return result;
+    }
+
+    public static class CAADto {
+
+        private String value;
+        private int flags;
+        private String tag;
+
+        public CAADto(String value, int flags, String tag) {
+            this.value = value;
+            this.flags = flags;
+            this.tag = tag;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public int getFlags() {
+            return flags;
+        }
+
+        public String getTag() {
+            return tag;
+        }
     }
 
 }

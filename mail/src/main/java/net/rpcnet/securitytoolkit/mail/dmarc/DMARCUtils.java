@@ -1,6 +1,6 @@
 package net.rpcnet.securitytoolkit.mail.dmarc;
 
-public class DMARCUtils {
+public final class DMARCUtils {
 
     public static final String DMARC_DELIMIER = ";";
 
@@ -15,4 +15,8 @@ public class DMARCUtils {
     public static final String FORENSIC_REPORTING_OPTIONS_KEY = "fo";
     public static final String REPORT_FORMAT_KEY = "rf";
     public static final String AGGREGATE_REPORT_TIME_INTERVAL_KEY = "ri";
+
+    private DMARCUtils(){
+        //Private utility class constructor
+    }
 }
