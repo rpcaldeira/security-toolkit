@@ -26,8 +26,8 @@ class DMARCCheckerTest {
         assertEquals("mailto:webmaster@rpcnet.net", dmarcResult.getAggregateReport().get());
         assertTrue(dmarcResult.getPolicy().isPresent());
         assertEquals("quarantine", dmarcResult.getPolicy().get());
-        assertTrue(dmarcResult.getSubdomainPolicy().isPresent());
-        assertEquals("reject", dmarcResult.getSubdomainPolicy().get());
+        assertTrue(dmarcResult.getSubdomainsPolicy().isPresent());
+        assertEquals("reject", dmarcResult.getSubdomainsPolicy().get());
         assertTrue(dmarcResult.getDomainKeysAlignment().isPresent());
         assertEquals("s", dmarcResult.getDomainKeysAlignment().get());
         assertTrue(dmarcResult.getSPFAlignment().isPresent());

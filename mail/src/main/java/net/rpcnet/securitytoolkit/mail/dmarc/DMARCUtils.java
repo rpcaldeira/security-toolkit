@@ -9,7 +9,7 @@ public final class DMARCUtils {
     public static final String FORENSIC_REPORT_KEY = "ruf";
     public static final String AGGREGATE_REPORT_KEY = "rua";
     public static final String POLICY_KEY = "p";
-    public static final String SUBDOMAIN_POLICY_KEY = "sp";
+    public static final String SUBDOMAINS_POLICY_KEY = "sp";
     public static final String DOMAIN_KEYS_ALIGNMENT_KEY = "adkim";
     public static final String SPF_ALIGNMENT_KEY = "aspf";
     public static final String FORENSIC_REPORTING_OPTIONS_KEY = "fo";

@@ -14,7 +14,7 @@ import static net.rpcnet.securitytoolkit.mail.dmarc.DMARCUtils.PERCENTAGE_KEY;
 import static net.rpcnet.securitytoolkit.mail.dmarc.DMARCUtils.POLICY_KEY;
 import static net.rpcnet.securitytoolkit.mail.dmarc.DMARCUtils.REPORT_FORMAT_KEY;
 import static net.rpcnet.securitytoolkit.mail.dmarc.DMARCUtils.SPF_ALIGNMENT_KEY;
-import static net.rpcnet.securitytoolkit.mail.dmarc.DMARCUtils.SUBDOMAIN_POLICY_KEY;
+import static net.rpcnet.securitytoolkit.mail.dmarc.DMARCUtils.SUBDOMAINS_POLICY_KEY;
 import static net.rpcnet.securitytoolkit.mail.dmarc.DMARCUtils.VERSION_KEY;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -89,13 +89,13 @@ class DMARCParserTest {
     @Test
     void parseSubDomainPolicyPartialDMARCResponse() {
         Properties properties = new Properties();
-        String subDomainPolicy = "reject";
-        properties.put(SUBDOMAIN_POLICY_KEY, subDomainPolicy);
+        String subDomainsPolicy = "reject";
+        properties.put(SUBDOMAINS_POLICY_KEY, subDomainsPolicy);
 
         Optional<DMARCResult> dmarcResult = DMARCParser.parseDMARCResponse(properties);
         assertFalse(dmarcResult.isEmpty());
-        assertTrue(dmarcResult.get().getSubdomainPolicy().isPresent());
-        assertEquals(subDomainPolicy, dmarcResult.get().getSubdomainPolicy().get());
+        assertTrue(dmarcResult.get().getSubdomainsPolicy().isPresent());
+        assertEquals(subDomainsPolicy, dmarcResult.get().getSubdomainsPolicy().get());
     }
 
     @Test
@@ -172,8 +172,8 @@ class DMARCParserTest {
         properties.put(AGGREGATE_REPORT_KEY, aggregateReport);
         String policy = "quarantine";
         properties.put(POLICY_KEY, policy);
-        String subDomainPolicy = "reject";
-        properties.put(SUBDOMAIN_POLICY_KEY, subDomainPolicy);
+        String subDomainsPolicy = "reject";
+        properties.put(SUBDOMAINS_POLICY_KEY, subDomainsPolicy);
         String domainKeysAlignment = "s";
         properties.put(DOMAIN_KEYS_ALIGNMENT_KEY, domainKeysAlignment);
         String spfAlignment = "s";
@@ -198,8 +198,8 @@ class DMARCParserTest {
         assertEquals(aggregateReport, dmarcResult.get().getAggregateReport().get());
         assertTrue(dmarcResult.get().getPolicy().isPresent());
         assertEquals(policy, dmarcResult.get().getPolicy().get());
-        assertTrue(dmarcResult.get().getSubdomainPolicy().isPresent());
-        assertEquals(subDomainPolicy, dmarcResult.get().getSubdomainPolicy().get());
+        assertTrue(dmarcResult.get().getSubdomainsPolicy().isPresent());
+        assertEquals(subDomainsPolicy, dmarcResult.get().getSubdomainsPolicy().get());
         assertTrue(dmarcResult.get().getDomainKeysAlignment().isPresent());
         assertEquals(domainKeysAlignment, dmarcResult.get().getDomainKeysAlignment().get());
         assertTrue(dmarcResult.get().getSPFAlignment().isPresent());
@@ -210,6 +210,14 @@ class DMARCParserTest {
         assertEquals(reportFormat, dmarcResult.get().getReportFormat().get());
         assertTrue(dmarcResult.get().getAggregateReportTimeInterval().isPresent());
         assertEquals(aggregateReportTimeInterval, dmarcResult.get().getAggregateReportTimeInterval().get());
+    }
+
+    @Test
+    void parseNonStringProperties() {
+        Properties properties = new Properties();
+        properties.put(VERSION_KEY, new StringBuilder());
+        Optional<DMARCResult> dmarcResult = DMARCParser.parseDMARCResponse(properties);
+        assertTrue(dmarcResult.isEmpty());
     }
 
 }

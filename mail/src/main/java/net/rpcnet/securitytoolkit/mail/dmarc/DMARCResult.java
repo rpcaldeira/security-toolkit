@@ -16,7 +16,7 @@ import static net.rpcnet.securitytoolkit.mail.dmarc.DMARCUtils.PERCENTAGE_KEY;
 import static net.rpcnet.securitytoolkit.mail.dmarc.DMARCUtils.POLICY_KEY;
 import static net.rpcnet.securitytoolkit.mail.dmarc.DMARCUtils.REPORT_FORMAT_KEY;
 import static net.rpcnet.securitytoolkit.mail.dmarc.DMARCUtils.SPF_ALIGNMENT_KEY;
-import static net.rpcnet.securitytoolkit.mail.dmarc.DMARCUtils.SUBDOMAIN_POLICY_KEY;
+import static net.rpcnet.securitytoolkit.mail.dmarc.DMARCUtils.SUBDOMAINS_POLICY_KEY;
 import static net.rpcnet.securitytoolkit.mail.dmarc.DMARCUtils.VERSION_KEY;
 
 @Value.Immutable
@@ -29,7 +29,7 @@ public abstract class DMARCResult {
     public abstract Optional<String> getForensicReport();
     public abstract Optional<String> getAggregateReport();
     public abstract Optional<String> getPolicy();
-    public abstract Optional<String> getSubdomainPolicy();
+    public abstract Optional<String> getSubdomainsPolicy();
     public abstract Optional<String> getDomainKeysAlignment();
     public abstract Optional<String> getSPFAlignment();
     public abstract Optional<String> getReportFormat();
@@ -55,8 +55,8 @@ public abstract class DMARCResult {
         if(this.getPolicy().isPresent()){
             list.add(POLICY_KEY + EQUAL_SIGN + this.getPolicy());
         }
-        if(this.getSubdomainPolicy().isPresent()){
-            list.add(SUBDOMAIN_POLICY_KEY + EQUAL_SIGN + this.getSubdomainPolicy());
+        if(this.getSubdomainsPolicy().isPresent()){
+            list.add(SUBDOMAINS_POLICY_KEY + EQUAL_SIGN + this.getSubdomainsPolicy());
         }
         if(this.getDomainKeysAlignment().isPresent()){
             list.add(DOMAIN_KEYS_ALIGNMENT_KEY + EQUAL_SIGN + this.getDomainKeysAlignment());
