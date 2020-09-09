@@ -216,6 +216,16 @@ class DMARCParserTest {
     void parseNonStringProperties() {
         Properties properties = new Properties();
         properties.put(VERSION_KEY, new StringBuilder());
+        properties.put(PERCENTAGE_KEY, new StringBuilder());
+        properties.put(FORENSIC_REPORT_KEY, new StringBuilder());
+        properties.put(AGGREGATE_REPORT_KEY, new StringBuilder());
+        properties.put(POLICY_KEY, new StringBuilder());
+        properties.put(SUBDOMAINS_POLICY_KEY, new StringBuilder());
+        properties.put(DOMAIN_KEYS_ALIGNMENT_KEY, new StringBuilder());
+        properties.put(SPF_ALIGNMENT_KEY, new StringBuilder());
+        properties.put(FORENSIC_REPORTING_OPTIONS_KEY, new StringBuilder());
+        properties.put(REPORT_FORMAT_KEY, new StringBuilder());
+        properties.put(AGGREGATE_REPORT_TIME_INTERVAL_KEY, new StringBuilder());
         Optional<DMARCResult> dmarcResult = DMARCParser.parseDMARCResponse(properties);
         assertTrue(dmarcResult.isEmpty());
     }
