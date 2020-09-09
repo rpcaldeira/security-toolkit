@@ -46,48 +46,74 @@ public final class DMARCParser {
     public static Optional<DMARCResult> parseDMARCResponse(Properties properties){
         ImmutableDMARCResult.Builder builder = ImmutableDMARCResult.builder();
 
+        if(properties.isEmpty()){
+            return Optional.empty();
+        }
+
         if(properties.containsKey(VERSION_KEY)){
             builder.version(properties.getProperty(VERSION_KEY));
+        } else {
+            builder.version(Optional.empty());
         }
 
         if(properties.containsKey(PERCENTAGE_KEY)){
             builder.percentage(properties.getProperty(PERCENTAGE_KEY));
+        } else {
+            builder.percentage(Optional.empty());
         }
 
         if(properties.containsKey(FORENSIC_REPORT_KEY)){
             builder.forensicReport(properties.getProperty(FORENSIC_REPORT_KEY));
+        } else {
+            builder.forensicReport(Optional.empty());
         }
 
         if(properties.containsKey(AGGREGATE_REPORT_KEY)){
             builder.aggregateReport(properties.getProperty(AGGREGATE_REPORT_KEY));
+        } else {
+            builder.aggregateReport(Optional.empty());
         }
 
         if(properties.containsKey(POLICY_KEY)){
             builder.policy(properties.getProperty(POLICY_KEY));
+        } else {
+            builder.policy(Optional.empty());
         }
 
         if(properties.containsKey(SUBDOMAIN_POLICY_KEY)){
             builder.subdomainPolicy(properties.getProperty(SUBDOMAIN_POLICY_KEY));
+        } else {
+            builder.subdomainPolicy(Optional.empty());
         }
 
         if(properties.containsKey(DOMAIN_KEYS_ALIGNMENT_KEY)){
             builder.domainKeysAlignment(properties.getProperty(DOMAIN_KEYS_ALIGNMENT_KEY));
+        } else {
+            builder.domainKeysAlignment(Optional.empty());
         }
 
         if(properties.containsKey(SPF_ALIGNMENT_KEY)){
             builder.sPFAlignment(properties.getProperty(SPF_ALIGNMENT_KEY));
+        } else {
+            builder.sPFAlignment(Optional.empty());
         }
 
         if(properties.containsKey(FORENSIC_REPORTING_OPTIONS_KEY)){
             builder.forensicReportingOptions(properties.getProperty(FORENSIC_REPORTING_OPTIONS_KEY));
+        } else {
+            builder.forensicReportingOptions(Optional.empty());
         }
 
         if(properties.containsKey(REPORT_FORMAT_KEY)){
             builder.reportFormat(properties.getProperty(REPORT_FORMAT_KEY));
+        } else {
+            builder.reportFormat(Optional.empty());
         }
 
         if(properties.containsKey(AGGREGATE_REPORT_TIME_INTERVAL_KEY)){
             builder.aggregateReportTimeInterval(properties.getProperty(AGGREGATE_REPORT_TIME_INTERVAL_KEY));
+        } else {
+            builder.aggregateReportTimeInterval(Optional.empty());
         }
 
         return Optional.of(builder.build());
