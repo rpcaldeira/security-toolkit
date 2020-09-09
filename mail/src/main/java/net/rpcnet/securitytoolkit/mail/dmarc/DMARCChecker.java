@@ -14,7 +14,10 @@ public class DMARCChecker {
 
     public static Optional<DMARCResult> getDMARC(String domain){
         String dnsResponse = Objects.requireNonNull(RecordChecker.getTXT(DMARC_FORMAT, domain)).stream().findFirst().orElse(null);
+        return getDmarcResult(dnsResponse);
+    }
 
+    public static Optional<DMARCResult> getDmarcResult(String dnsResponse) {
         if(dnsResponse == null || dnsResponse.isEmpty() || dnsResponse.isBlank()){
             return Optional.empty();
         }

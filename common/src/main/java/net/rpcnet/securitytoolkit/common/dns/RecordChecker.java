@@ -11,9 +11,8 @@ import org.xbill.DNS.Type;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 
-public class RecordChecker {
+public final class RecordChecker {
 
     private RecordChecker(){
         //Private utility class constructor
@@ -23,27 +22,22 @@ public class RecordChecker {
         return getCAA("%s", domain);
     }
 
-    public static Collection<String> getTXT(String format, String domain){
-        return getTXT(format, domain, Type.TXT);
-    }
     public static Collection<String> getTXT(String domain){
-        return getTXT("%s", domain, Type.TXT);
+        return getTXT("%s", domain);
     }
-    public static Collection<String> getTXT(String format, String domain, int type){
+    public static Collection<String> getTXT(String format, String domain){
         String testingDomain = String.format(format, domain);
         final Collection<String> result = new ArrayList<>();
 
         try {
-            final Lookup lookup = new Lookup(testingDomain, type);
+            final Lookup lookup = new Lookup(testingDomain, Type.TXT);
             lookup.setResolver(new SimpleResolver());
             lookup.setCache(null);
             final Record[] records = lookup.run();
             if (lookup.getResult() == Lookup.SUCCESSFUL) {
                 for (Record record : records) {
                     final TXTRecord txt = (TXTRecord) record;
-                    for (Iterator<String> iterator = txt.getStrings().iterator(); iterator.hasNext();) {
-                        result.add(iterator.next());
-                    }
+                    result.addAll(txt.getStrings());
                 }
             }
         } catch (UnknownHostException | TextParseException e) {
@@ -75,11 +69,11 @@ public class RecordChecker {
         return result;
     }
 
-    public static class CAADto {
+    public static final class CAADto {
 
-        private String value;
-        private int flags;
-        private String tag;
+        private final String value;
+        private final int flags;
+        private final String tag;
 
         public CAADto(String value, int flags, String tag) {
             this.value = value;

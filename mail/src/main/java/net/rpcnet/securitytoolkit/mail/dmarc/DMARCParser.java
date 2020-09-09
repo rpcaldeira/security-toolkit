@@ -25,6 +25,10 @@ public final class DMARCParser {
         //Private utility class constructor
     }
 
+    public static Optional<DMARCResult> parseDMARCResponse(String dmarcResponse){
+        return parseDMARCResponse(DMARCParser.parseDMARCProperties(dmarcResponse));
+    }
+
     public static Properties parseDMARCProperties(String dnsResponse) {
         StringTokenizer stringTokenizer = new StringTokenizer(dnsResponse, DMARC_DELIMIER);
         Properties properties = new Properties();
@@ -33,10 +37,6 @@ public final class DMARCParser {
             properties.put(split[0], split[1]);
         }
         return properties;
-    }
-
-    public static Optional<DMARCResult> parseDMARCResponse(String dmarcResponse){
-        return parseDMARCResponse(DMARCParser.parseDMARCProperties(dmarcResponse));
     }
 
     public static Optional<DMARCResult> parseDMARCResponse(Properties properties){
