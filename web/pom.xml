@@ -36,6 +36,12 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
         </dependency>
+
+        <!-- Internal Dependencies -->
+        <dependency>
+            <groupId>net.rpcnet.securitytoolkit</groupId>
+            <artifactId>common</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
