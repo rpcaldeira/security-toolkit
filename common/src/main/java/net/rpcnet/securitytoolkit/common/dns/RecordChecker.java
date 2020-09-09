@@ -1,5 +1,7 @@
 package net.rpcnet.securitytoolkit.common.dns;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.xbill.DNS.CAARecord;
 import org.xbill.DNS.Lookup;
 import org.xbill.DNS.Record;
@@ -13,6 +15,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public final class RecordChecker {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(RecordChecker.class);
 
     private RecordChecker(){
         //Private utility class constructor
@@ -41,7 +45,7 @@ public final class RecordChecker {
                 }
             }
         } catch (UnknownHostException | TextParseException e) {
-            e.printStackTrace();
+            LOGGER.error("Error processing the DNS Query: ", e);
         }
 
         return result;
@@ -63,7 +67,7 @@ public final class RecordChecker {
                 }
             }
         } catch (UnknownHostException | TextParseException e) {
-            e.printStackTrace();
+            LOGGER.error("Error processing the DNS Query: ", e);
         }
 
         return result;
