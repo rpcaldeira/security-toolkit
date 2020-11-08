@@ -44,8 +44,8 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:https://github.com/rpcaldeira/security-toolkit</connection>
-        <developerConnection>scm:git:https://github.com/rpcaldeira/security-toolkit</developerConnection>
+        <connection>scm:git:git@github.com:rpcaldeira/security-toolkit.git</connection>
+        <developerConnection>scm:git:git@github.com:rpcaldeira/security-toolkit.git</developerConnection>
         <url>https://github.com/rpcaldeira/security-toolkit</url>
         <tag>HEAD</tag>
     </scm>
