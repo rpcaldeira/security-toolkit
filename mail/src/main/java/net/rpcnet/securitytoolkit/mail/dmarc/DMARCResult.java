@@ -41,37 +41,37 @@ public abstract class DMARCResult {
         List<String> list = new ArrayList<>();
 
         if(this.getVersion().isPresent()){
-            list.add(VERSION_KEY + EQUAL_SIGN + this.getVersion());
+            list.add(VERSION_KEY + EQUAL_SIGN + this.getVersion().get());
         }
         if(this.getPercentage().isPresent()){
-            list.add(PERCENTAGE_KEY + EQUAL_SIGN + this.getPercentage());
+            list.add(PERCENTAGE_KEY + EQUAL_SIGN + this.getPercentage().get());
         }
         if(this.getForensicReport().isPresent()){
-            list.add(FORENSIC_REPORT_KEY + EQUAL_SIGN + this.getForensicReport());
+            list.add(FORENSIC_REPORT_KEY + EQUAL_SIGN + this.getForensicReport().get());
         }
         if(this.getAggregateReport().isPresent()){
-            list.add(AGGREGATE_REPORT_KEY + EQUAL_SIGN + this.getAggregateReport());
+            list.add(AGGREGATE_REPORT_KEY + EQUAL_SIGN + this.getAggregateReport().get());
         }
         if(this.getPolicy().isPresent()){
-            list.add(POLICY_KEY + EQUAL_SIGN + this.getPolicy());
+            list.add(POLICY_KEY + EQUAL_SIGN + this.getPolicy().get());
         }
         if(this.getSubdomainsPolicy().isPresent()){
-            list.add(SUBDOMAINS_POLICY_KEY + EQUAL_SIGN + this.getSubdomainsPolicy());
+            list.add(SUBDOMAINS_POLICY_KEY + EQUAL_SIGN + this.getSubdomainsPolicy().get());
         }
         if(this.getDomainKeysAlignment().isPresent()){
-            list.add(DOMAIN_KEYS_ALIGNMENT_KEY + EQUAL_SIGN + this.getDomainKeysAlignment());
+            list.add(DOMAIN_KEYS_ALIGNMENT_KEY + EQUAL_SIGN + this.getDomainKeysAlignment().get());
         }
         if(this.getSPFAlignment().isPresent()){
-            list.add(SPF_ALIGNMENT_KEY + EQUAL_SIGN + this.getSPFAlignment());
+            list.add(SPF_ALIGNMENT_KEY + EQUAL_SIGN + this.getSPFAlignment().get());
         }
         if(this.getReportFormat().isPresent()){
-            list.add(REPORT_FORMAT_KEY + EQUAL_SIGN + this.getReportFormat());
+            list.add(REPORT_FORMAT_KEY + EQUAL_SIGN + this.getReportFormat().get());
         }
         if(this.getAggregateReportTimeInterval().isPresent()){
-            list.add(AGGREGATE_REPORT_TIME_INTERVAL_KEY + EQUAL_SIGN + this.getAggregateReportTimeInterval());
+            list.add(AGGREGATE_REPORT_TIME_INTERVAL_KEY + EQUAL_SIGN + this.getAggregateReportTimeInterval().get());
         }
         if(this.getForensicReportingOptions().isPresent()){
-            list.add(FORENSIC_REPORTING_OPTIONS_KEY + EQUAL_SIGN + this.getForensicReportingOptions());
+            list.add(FORENSIC_REPORTING_OPTIONS_KEY + EQUAL_SIGN + this.getForensicReportingOptions().get());
         }
 
         return String.join(DMARC_DELIMIER, list);
