@@ -40,39 +40,17 @@ public abstract class DMARCResult {
     public String toString() {
         List<String> list = new ArrayList<>();
 
-        if(this.getVersion().isPresent()){
-            list.add(VERSION_KEY + EQUAL_SIGN + this.getVersion().get());
-        }
-        if(this.getPercentage().isPresent()){
-            list.add(PERCENTAGE_KEY + EQUAL_SIGN + this.getPercentage().get());
-        }
-        if(this.getForensicReport().isPresent()){
-            list.add(FORENSIC_REPORT_KEY + EQUAL_SIGN + this.getForensicReport().get());
-        }
-        if(this.getAggregateReport().isPresent()){
-            list.add(AGGREGATE_REPORT_KEY + EQUAL_SIGN + this.getAggregateReport().get());
-        }
-        if(this.getPolicy().isPresent()){
-            list.add(POLICY_KEY + EQUAL_SIGN + this.getPolicy().get());
-        }
-        if(this.getSubdomainsPolicy().isPresent()){
-            list.add(SUBDOMAINS_POLICY_KEY + EQUAL_SIGN + this.getSubdomainsPolicy().get());
-        }
-        if(this.getDomainKeysAlignment().isPresent()){
-            list.add(DOMAIN_KEYS_ALIGNMENT_KEY + EQUAL_SIGN + this.getDomainKeysAlignment().get());
-        }
-        if(this.getSPFAlignment().isPresent()){
-            list.add(SPF_ALIGNMENT_KEY + EQUAL_SIGN + this.getSPFAlignment().get());
-        }
-        if(this.getReportFormat().isPresent()){
-            list.add(REPORT_FORMAT_KEY + EQUAL_SIGN + this.getReportFormat().get());
-        }
-        if(this.getAggregateReportTimeInterval().isPresent()){
-            list.add(AGGREGATE_REPORT_TIME_INTERVAL_KEY + EQUAL_SIGN + this.getAggregateReportTimeInterval().get());
-        }
-        if(this.getForensicReportingOptions().isPresent()){
-            list.add(FORENSIC_REPORTING_OPTIONS_KEY + EQUAL_SIGN + this.getForensicReportingOptions().get());
-        }
+        getVersion().ifPresent(s -> list.add(VERSION_KEY + EQUAL_SIGN + s));
+        getPercentage().ifPresent(s -> list.add(PERCENTAGE_KEY + EQUAL_SIGN + s));
+        getForensicReport().ifPresent(s -> list.add(FORENSIC_REPORT_KEY + EQUAL_SIGN + s));
+        getAggregateReport().ifPresent(s -> list.add(AGGREGATE_REPORT_KEY + EQUAL_SIGN + s));
+        getPolicy().ifPresent(s -> list.add(POLICY_KEY + EQUAL_SIGN + s));
+        getSubdomainsPolicy().ifPresent(s -> list.add(SUBDOMAINS_POLICY_KEY + EQUAL_SIGN + s));
+        getDomainKeysAlignment().ifPresent(s -> list.add(DOMAIN_KEYS_ALIGNMENT_KEY + EQUAL_SIGN + s));
+        getSPFAlignment().ifPresent(s -> list.add(SPF_ALIGNMENT_KEY + EQUAL_SIGN + s));
+        getReportFormat().ifPresent(s -> list.add(REPORT_FORMAT_KEY + EQUAL_SIGN + s));
+        getAggregateReportTimeInterval().ifPresent(s -> list.add(AGGREGATE_REPORT_TIME_INTERVAL_KEY + EQUAL_SIGN + s));
+        getForensicReportingOptions().ifPresent(s -> list.add(FORENSIC_REPORTING_OPTIONS_KEY + EQUAL_SIGN + s));
 
         return String.join(DMARC_DELIMIER, list);
     }
