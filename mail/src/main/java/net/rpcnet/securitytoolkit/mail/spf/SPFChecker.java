@@ -13,12 +13,15 @@ public class SPFChecker {
     }
 
     public static Optional<SPFResult> getSPF(String domain){
-        String dnsResponse = RecordChecker.getTXT(domain).stream()
+        Optional<String> dnsResponse = RecordChecker.getTXT(domain).stream()
                 .filter(str -> str.contains(SPF))
-                .findAny()
-                .orElse(null);
+                .findAny();
 
-        return SPFParser.parseSPF(dnsResponse);
+        if(dnsResponse.isEmpty()){
+            return Optional.empty();
+        }
+
+        return SPFParser.parseSPF(dnsResponse.get());
     }
 
 }

@@ -6,6 +6,6 @@ import org.immutables.value.Value;
 public interface SPFElement {
 
     SPFQualifier getQualifier();
-    String getName();
+    String getValue();
 
 }

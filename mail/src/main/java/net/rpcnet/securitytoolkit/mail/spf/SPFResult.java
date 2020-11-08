@@ -8,10 +8,10 @@ import java.util.Optional;
 @Value.Immutable
 public interface SPFResult {
 
-    Optional<String> getVersion();
-    Optional<String> getMailExchange();
-    Optional<String> getARecord();
-    Optional<String> getAll();
-    List<String> getInclude();
+    Optional<Integer> getVersion();
+    Optional<SPFQualifier> getMailExchange();
+    List<SPFElement> getARecord();
+    Optional<SPFQualifier> getAll();
+    List<SPFElement> getInclude();
 
 }
