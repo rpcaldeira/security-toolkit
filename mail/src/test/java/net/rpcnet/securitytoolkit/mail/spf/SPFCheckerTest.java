@@ -19,10 +19,12 @@ class SPFCheckerTest {
         assertTrue(spf.isPresent());
         SPFResult spfResult = spf.get();
 
-        assertEquals(Optional.of(SPFQualifier.FAIL), spfResult.getAll());
-        assertEquals(Collections.emptyList(), spfResult.getARecord());
-        assertEquals(Collections.singletonList(ImmutableSPFElement.builder().qualifier(SPFQualifier.PASS).value(SPF_GOOGLE_COM).build()), spfResult.getInclude());
-        assertEquals(Optional.of(SPFQualifier.PASS), spfResult.getMailExchange());
+        assertEquals(Optional.of(SPFQualifier.FAIL), spfResult.getAllQualifier());
+        assertEquals(Optional.empty(), spfResult.getAQualifier());
+        assertEquals(Collections.singletonList(ImmutableSPFElement.builder().qualifier(SPFQualifier.PASS).value(SPF_GOOGLE_COM).build()), spfResult.getIncludeRecords());
+        assertEquals(Optional.of(SPFQualifier.PASS), spfResult.getMailExchangeQualifier());
         assertEquals(Optional.of(1), spfResult.getVersion());
+        assertEquals(Collections.emptyList(), spfResult.getIp4Records());
+        assertEquals(Collections.emptyList(), spfResult.getIp6Records());
     }
 }

@@ -14,6 +14,7 @@ public final class SPFParser {
     public static final String SPF = "spf";
     public static final String ALL = "all";
     public static final String MX = "mx";
+    public static final String A = "a";
     public static final String INCLUDE = "include:";
     public static final String IP_4 = "ip4:";
     public static final String IP_6 = "ip6:";
@@ -29,15 +30,19 @@ public final class SPFParser {
         Optional<Integer> version = parseVersion(spfParameters);
         Optional<SPFQualifier> allQualifier = parseAllQualifier(spfParameters);
         Optional<SPFQualifier> mailExchangeQualifier = parseMailExchangeQualifier(spfParameters);
-        List<SPFElement> aRecordElements = parseARecordElements(spfParameters);
+        Optional<SPFQualifier> aQualifier = parseAQualifier(spfParameters);
         List<SPFElement> includeElements = parseIncludeElements(spfParameters);
+        List<SPFElement> ip4Record = parseIp4RecordElements(spfParameters);
+        List<SPFElement> ip6Record = parseIp6RecordElements(spfParameters);
 
         return Optional.of(ImmutableSPFResult.builder()
                 .version(version)
-                .aRecord(aRecordElements)
-                .include(includeElements)
-                .mailExchange(mailExchangeQualifier)
-                .all(allQualifier)
+                .aQualifier(aQualifier)
+                .ip4Records(ip4Record)
+                .ip6Records(ip6Record)
+                .includeRecords(includeElements)
+                .mailExchangeQualifier(mailExchangeQualifier)
+                .allQualifier(allQualifier)
                 .build()
         );
     }
@@ -70,22 +75,27 @@ public final class SPFParser {
                 .collect(Collectors.toList());
     }
 
-    private static List<SPFElement> parseARecordElements(List<String> spfParameters) {
-        ArrayList<SPFElement> spfElements = new ArrayList<>();
+    private static Optional<SPFQualifier> parseAQualifier(List<String> spfParameters) {
+        return spfParameters.stream()
+                .filter(parameter -> parameter.endsWith(A))
+                .filter(parameter -> parameter.length() == 1 || parameter.length() == 2)
+                .map(SPFParser::parseQualifier)
+                .findFirst();
+    }
 
-        List<ImmutableSPFElement> ip4 = spfParameters.stream()
-                .filter(parameter -> parameter.contains(IP_4))
+    private static List<SPFElement> parseIp4RecordElements(List<String> spfParameters) {
+        return parseGenericIpRecordElements(spfParameters, IP_4);
+    }
+
+    private static List<SPFElement> parseIp6RecordElements(List<String> spfParameters) {
+        return parseGenericIpRecordElements(spfParameters, IP_6);
+    }
+
+    private static List<SPFElement> parseGenericIpRecordElements(List<String> spfParameters, String filter) {
+        return spfParameters.stream()
+                .filter(parameter -> parameter.contains(filter))
                 .map(parameter -> ImmutableSPFElement.builder().qualifier(parseQualifier(parameter)).value(parameter.substring(parameter.indexOf(CH) + 1)).build())
                 .collect(Collectors.toList());
-        spfElements.addAll(ip4);
-
-        List<ImmutableSPFElement> ip6 = spfParameters.stream()
-                .filter(parameter -> parameter.contains(IP_6))
-                .map(parameter -> ImmutableSPFElement.builder().qualifier(parseQualifier(parameter)).value(parameter.substring(parameter.indexOf(CH) + 1)).build())
-                .collect(Collectors.toList());
-        spfElements.addAll(ip6);
-
-        return spfElements;
     }
 
     private static SPFQualifier parseQualifier(String dnsElement){
