@@ -5,7 +5,7 @@
     <groupId>net.rpcnet.securitytoolkit</groupId>
     <artifactId>securitytoolkit-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.1</version>
+    <version>1.0.2-SNAPSHOT</version>
 
     <name>RPCNET Java Security Toolkit</name>
 
@@ -45,7 +45,7 @@
         <connection>scm:git:git@github.com:rpcaldeira/security-toolkit.git</connection>
         <developerConnection>scm:git:git@github.com:rpcaldeira/security-toolkit.git</developerConnection>
         <url>https://github.com/rpcaldeira/security-toolkit</url>
-        <tag>securitytoolkit-parent-1.0.1</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>
