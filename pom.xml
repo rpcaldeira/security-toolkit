@@ -113,7 +113,6 @@
                 <groupId>dnsjava</groupId>
                 <artifactId>dnsjava</artifactId>
                 <version>${dnsjava.version}</version>
-                <scope>provided</scope>
             </dependency>
 
             <!-- Clean Code Dependencies -->
