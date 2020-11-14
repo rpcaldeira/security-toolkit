@@ -13,14 +13,16 @@
     <name>RPCNET Java Security Toolkit: Web Module</name>
 
     <dependencies>
+        <!-- Functional Dependencies -->
+        <dependency>
+            <groupId>dnsjava</groupId>
+            <artifactId>dnsjava</artifactId>
+        </dependency>
+
         <!-- Clean Code Dependencies -->
         <dependency>
             <groupId>org.immutables</groupId>
             <artifactId>value</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>dnsjava</groupId>
-            <artifactId>dnsjava</artifactId>
         </dependency>
 
         <!-- Logging Dependencies -->
@@ -41,6 +43,14 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-inline</artifactId>
         </dependency>
 
         <!-- Internal Dependencies -->

@@ -6,15 +6,19 @@ import java.util.Optional;
 
 public class SPFChecker {
 
-    public static final String SPF = "spf";
+    private final RecordChecker recordChecker;
 
-    private SPFChecker(){
-        //Private utility class constructor
+    public SPFChecker(){
+        this.recordChecker = new RecordChecker();
     }
 
-    public static Optional<SPFResult> getSPF(String domain){
-        Optional<String> dnsResponse = RecordChecker.getTXT(domain).stream()
-                .filter(str -> str.contains(SPF))
+    SPFChecker(RecordChecker recordChecker){
+        this.recordChecker = recordChecker;
+    }
+
+    public Optional<SPFResult> getSPF(String domain){
+        Optional<String> dnsResponse = recordChecker.getTXT(domain).stream()
+                .filter(str -> str.contains(RecordChecker.SPF))
                 .findAny();
 
         if(dnsResponse.isEmpty()){

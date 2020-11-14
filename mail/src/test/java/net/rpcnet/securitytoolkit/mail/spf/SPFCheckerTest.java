@@ -1,21 +1,44 @@
 package net.rpcnet.securitytoolkit.mail.spf;
 
+import net.rpcnet.securitytoolkit.common.dns.RecordChecker;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class SPFCheckerTest {
 
-    public static final String SPF_GOOGLE_COM = "_spf.google.com";
-    public static final String RPCNET_NET = "rpcnet.net";
+    private static final String SPF_GOOGLE_COM = "_spf.google.com";
+    private static final String DOMAIN = "rpcnet.net";
+    private static final String SPF_STRING = "v=spf1 +mx +include:_spf.google.com -all";
+
+    private SPFChecker spfChecker;
+
+    @BeforeAll
+    public void setUp(){
+        List<String> result = Collections.singletonList(SPF_STRING);
+
+        RecordChecker recordChecker = mock(RecordChecker.class);
+        when(recordChecker.getTXT(DOMAIN)).thenReturn(result);
+
+        spfChecker = new SPFChecker(recordChecker);
+    }
 
     @Test
     void getSPF() {
-        Optional<SPFResult> spf = SPFChecker.getSPF(RPCNET_NET);
+        Optional<SPFResult> spf = spfChecker.getSPF(DOMAIN);
         assertTrue(spf.isPresent());
         SPFResult spfResult = spf.get();
 

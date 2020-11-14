@@ -1,15 +1,17 @@
 
-Lists of 13 third-party dependencies.
+Lists of 15 third-party dependencies.
      (BSD-2-Clause) dnsjava (dnsjava:dnsjava:3.2.2 - https://github.com/dnsjava/dnsjava)
      (The Apache Software License, Version 2.0) Apache Log4j (log4j:log4j:1.2.17 - http://logging.apache.org/log4j/1.2/)
-     (Apache License, Version 2.0) Byte Buddy (without dependencies) (net.bytebuddy:byte-buddy:1.10.15 - https://bytebuddy.net/byte-buddy)
-     (Apache License, Version 2.0) Byte Buddy agent (net.bytebuddy:byte-buddy-agent:1.10.15 - https://bytebuddy.net/byte-buddy-agent)
+     (The Apache Software License, Version 2.0) Byte Buddy (without dependencies) (net.bytebuddy:byte-buddy:1.8.15 - http://bytebuddy.net/byte-buddy)
+     (The Apache Software License, Version 2.0) Byte Buddy Java agent (net.bytebuddy:byte-buddy-agent:1.8.15 - http://bytebuddy.net/byte-buddy-agent)
      (The Apache License, Version 2.0) org.apiguardian:apiguardian-api (org.apiguardian:apiguardian-api:1.1.0 - https://github.com/apiguardian-team/apiguardian)
      (The Apache Software License, Version 2.0) org.immutables.value (org.immutables:value:2.8.2 - http://immutables.org/value)
      (Eclipse Public License v2.0) JUnit Jupiter API (org.junit.jupiter:junit-jupiter-api:5.6.2 - https://junit.org/junit5/)
      (Eclipse Public License v2.0) JUnit Platform Commons (org.junit.platform:junit-platform-commons:1.6.2 - https://junit.org/junit5/)
-     (The MIT License) mockito-core (org.mockito:mockito-core:3.6.0 - https://github.com/mockito/mockito)
-     (Apache License, Version 2.0) Objenesis (org.objenesis:objenesis:3.1 - http://objenesis.org)
+     (The MIT License) mockito-core (org.mockito:mockito-core:2.21.0 - https://github.com/mockito/mockito)
+     (The MIT License) mockito-inline (org.mockito:mockito-inline:2.13.0 - https://github.com/mockito/mockito)
+     (The MIT License) mockito-junit-jupiter (org.mockito:mockito-junit-jupiter:2.23.0 - https://github.com/mockito/mockito)
+     (Apache 2) Objenesis (org.objenesis:objenesis:2.6 - http://objenesis.org)
      (The Apache License, Version 2.0) org.opentest4j:opentest4j (org.opentest4j:opentest4j:1.2.0 - https://github.com/ota4j-team/opentest4j)
      (MIT License) SLF4J API Module (org.slf4j:slf4j-api:1.7.30 - http://www.slf4j.org)
      (MIT License) SLF4J LOG4J-12 Binding (org.slf4j:slf4j-log4j12:1.7.30 - http://www.slf4j.org)
