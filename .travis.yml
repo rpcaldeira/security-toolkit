@@ -1,9 +1,11 @@
 sudo: false
 language: java
+git:
+  depth: false
 jdk:
   - openjdk11
 addons:
   sonarcloud:
-    organization: "rpcaldeira-github" # the key of the org you chose at step #3
+    organization: "rpcaldeira-github"
 script:
   - mvn clean verify sonar:sonar
