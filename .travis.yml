@@ -8,4 +8,4 @@ addons:
     token:
       secure: ${SonarCloud} # encrypted value of your token
 script:
-  - mvn clean verify sonar:sonar -Pcoverage
+  - mvn clean verify sonar:sonar
