@@ -2,10 +2,10 @@ sudo: false
 language: java
 jdk:
   - openjdk11
-script: mvn clean verify sonar:sonar -Dsonar.login=${SonarCloud} -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=rpcaldeira-github
-#deploy:
-#  provider: script
-#  script: mvn -B release:prepare release:perform -Dtoken=${GitHub}
-#  on:
-#    branch: master
-#    jdk: openjdk11
+addons:
+  sonarcloud:
+    organization: "rpcaldeira-github" # the key of the org you chose at step #3
+    token:
+      secure: ${SonarCloud} # encrypted value of your token
+script:
+  - mvn clean verify sonar:sonar -Pcoverage
