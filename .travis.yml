@@ -5,7 +5,5 @@ jdk:
 addons:
   sonarcloud:
     organization: "rpcaldeira-github" # the key of the org you chose at step #3
-    token:
-      secure: ${SonarCloud} # encrypted value of your token
 script:
   - mvn clean verify sonar:sonar
