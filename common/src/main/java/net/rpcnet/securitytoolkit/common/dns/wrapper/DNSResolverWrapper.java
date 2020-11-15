@@ -9,9 +9,11 @@ import org.xbill.DNS.CAARecord;
 import org.xbill.DNS.Lookup;
 import org.xbill.DNS.Record;
 import org.xbill.DNS.SimpleResolver;
+import org.xbill.DNS.TSIG;
 import org.xbill.DNS.TXTRecord;
 import org.xbill.DNS.TextParseException;
 import org.xbill.DNS.Type;
+import org.xbill.DNS.ZoneTransferIn;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -63,6 +65,17 @@ public final class DNSResolverWrapper implements IDNSResolverWrapper {
         } catch (UnknownHostException | TextParseException e) {
             LOGGER.error("Error processing the DNS Query: ", e);
         }
+
+        return result;
+    }
+
+    @Override
+    public boolean getAXFR(String domain){
+
+        boolean result;
+
+        ZoneTransferIn.newAXFR(domain, , TSIG);
+
 
         return result;
     }
